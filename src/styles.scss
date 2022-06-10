@@ -2,9 +2,7 @@ body{
   background-color: dodgerblue;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  .app-container{
-    width: 90%;
-    margin: auto;
+  .container{
     #toolsbar{
         display:flex;
         background-color:dodgerblue;
@@ -17,14 +15,16 @@ body{
       margin: 20px 0px;
     }
     .editor{
-      width: 90%;
-      margin: auto;
-      height: 100px;
+      width: 100%;
+      margin:auto;
+      height: 75vh;
       box-shadow:0px 4px 50px rgba(0, 0,0, 0.5);
       textarea{
-        width:98%;
-        margin: auto;
-        height: 75%;
+        width:99.1%;
+        height: 100%;
+        border: none;
+        resize:none;
+        color:black;
         &:focus{
           border-radius: 2px;
         outline: 1px solid rgba(0, 0, 255, 0.781);
@@ -32,13 +32,30 @@ body{
       }
     }
     .preview{
-      width: 90%;
+      width: 100%;
       margin: auto;
-      margin-top:30px ;
+      height: 78vh;
+      overflow: scroll;
       background-color:white;
       color:black;
       box-shadow:0px 4px 50px rgba(0, 0,0, 0.5);
-      
+      #preview{
+        padding: 10px;
+      } 
     }
   }
+  @media screen and (max-width:768px) {
+    .editor{
+      width:88vw !important;
+      margin:auto;
+      margin-bottom:50px !important;
+    }
+  }
+ul{
+  margin:auto !important;
+  padding:auto !important;
+  li{
+    list-style: square !important;
+  }
+}
 }

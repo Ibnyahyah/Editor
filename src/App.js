@@ -4,19 +4,26 @@ import { Preview } from "./Preview";
 import { Editor } from "./Editor";
 import { ToolsBar } from "./Toolbar";
 import { useEffect, useState } from "react";
+import { placeholder } from "./placeholder";
 
 // Set options
 // `highlight` example uses https://highlightjs.org
 export default function App() {
   const [markdown, setMarkDown] = useState("");
 
-  const placeholder = `##Hello World`;
+  // const placeholder = `# Hello World`;
   // marked.setOptions({
   //   breaks: true,
   //   highlight: function (code) {
   //     return Prism.highlight(code, Prism.language, "javascript");
   //   }
   // });
+  // INSERTS target="_blank" INTO HREF TAGS (required for Codepen links)
+  // const renderer = new marked.Renderer();
+  // renderer.link = function (href, title, text) {
+  //   return `<a target="_blank" href="${href}">${text}</a>`;
+  // };
+
   marked.setOptions({
     renderer: new marked.Renderer(),
     highlight: function (code, lang) {
@@ -40,22 +47,28 @@ export default function App() {
 
   useEffect(() => {
     setMarkDown(placeholder);
-  }, [placeholder]);
+  }, []);
 
   return (
-    <div className="app-container">
+    <div className="container">
       <div className="header">Editor And Previewer</div>
-      <div className="editor">
-        <ToolsBar text="Editor" />
-        <Editor
-          onChange={HandleChange}
-          placeholder={placeholder}
-          markdown={markdown}
-        />
-      </div>
-      <div className="preview">
-        <ToolsBar text="Preview" />
-        <Preview markdown={markdown} />
+      <div className="row gap-1">
+        <div className="col-6-sm col-6-md col-6-lg">
+          <div className="editor">
+            <ToolsBar text="Editor" />
+            <Editor
+              onChange={HandleChange}
+              placeholder={placeholder}
+              markdown={markdown}
+            />
+          </div>
+        </div>
+        <div className="col-6-sm col-6-md col-6-lg">
+          <div className="preview">
+            <ToolsBar text="Preview" />
+            <Preview markdown={markdown} />
+          </div>
+        </div>
       </div>
     </div>
   );
